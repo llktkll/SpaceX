@@ -12,84 +12,109 @@ export class AppComponent {
 
 
 
+  // isLand:boolean = true;
 
+  launch_year: any;
   missionData: any;
   launchSuccessData: any;
   fetchData: any;
 
 
 
+  // switchLaunchMode(){
+  //   const isLaunched:boolean = true;
+
+  //   console.log(isLaunched);
+  // }
+
+  // switchLandMode(){
+  //   this.isLand = !this.isLand;
+  // }
+
+
 
 
   SearchYear(value) {
     console.log(value)
-    let launch_year = value;
-    this.launchdetail.getDatabyYear(launch_year).subscribe((res: any) => {
+    this.launch_year = value;
+    this.launchdetail.getDatabyYear(this.launch_year).subscribe((res: any) => {
       console.log(res);
-      this.missionData =res;
+      this.missionData = res;
 
     })
 
-    
+
   }
+
+
 
   SuccessfulLaunch(value) {
-    console.log(value)
-    let launch_success = value;
-    this.launchdetail.getlaunchSuccess(launch_success).subscribe((res: any) => {
-      console.log(res);
-      this.missionData =res;
-      // this.sendToParent();
+    if (this.launch_year) {
 
-    })
 
+      console.log(value)
+      var launchedSuccessfully = value;
+      var launchYear = this.launch_year;
+      console.log(launchYear);
+      this.launchdetail.getlaunchSuccess(launchedSuccessfully, launchYear).subscribe((res: any) => {
+        console.log(res);
+        this.missionData = res;
+
+
+      })
+
+    } else {
+      // console.log("error found");
+      this.launchdetail.getlaunchSuccess(launchedSuccessfully, launchYear).subscribe((res: any) => {
+        console.log(res);
+        this.missionData = res;
+
+
+      })
+    }
   }
+
+
 
   SuccessfulLand(value) {
-    console.log(value)
-    let land_success = value;
-    this.launchdetail.getlaunchSuccess(land_success).subscribe((res: any) => {
-      console.log(res);
-      this.missionData =res;
-    
 
-    })
+    if (this.launch_year) {
 
+
+      console.log(value)
+      var landeddSuccessfully = value;
+      var launchYear = this.launch_year;
+      console.log(launchYear);
+      this.launchdetail.getlandSuccess(landeddSuccessfully, launchYear).subscribe((res: any) => {
+        console.log(res);
+        this.missionData = res;
+
+
+      })
+
+    } else {
+      // console.log("error found");
+      this.launchdetail.getlandSuccess(landeddSuccessfully, launchYear).subscribe((res: any) => {
+        console.log(res);
+        this.missionData = res;
+
+
+      })
+    }
   }
 
- 
 
 
-  // launchyear = ${launch_year}
-  // launchsuccess = ${launch_success}
-  //landsuccess = ${land_success}
-  // call a function {this function should include functionality
-  //  to change the url based on the data in the button}
-  //  where 
-
-
-
-  // Adding alt text for missing mission ID 
-
-  // if (){
-  //   document.getElementById(missionId).innerText = "No mission ID Found"
-  // }
 
 
   constructor(private launchdetail: LaunchdetailsService) {
     this.launchdetail.launchSuccess().subscribe((data: any) => {
-      // console.log(data);
       this.launchSuccessData = data;
-      // this.fetchData = this.missionData.
       console.log(this.launchSuccessData);
-
-
-
     }, err => {
       console.log(err)
-    }
+    })
 
-    )
   }
 
 
@@ -97,13 +122,8 @@ export class AppComponent {
 
   ngOnInit(): void {
     this.launchdetail.getData().subscribe((data: any) => {
-      // console.log(data);
       this.missionData = data;
-      // this.fetchData = this.missionData.
       console.log(this.missionData);
-
-
-
     }, err => {
       console.log(err)
     }
