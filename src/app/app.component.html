@@ -1,0 +1,152 @@
+<header>
+  <h1>SpaceX Launch Programs</h1>
+</header>
+<div class="container">
+  <p><b>Filters</b></p>
+
+  <!-- <p>Launch Year</p>
+  <br>
+  <div id="launchYear" *ngFor="let year of missionData">
+    <button>{{year.launch_year}}</button>
+  </div>
+  <div></div> -->
+
+
+
+  <table>
+
+    <p><b>Launch Year</b></p>
+    <hr>
+    <tr>
+      <td>
+        <!-- <button><p>2006</p></button> -->
+        <button (click)="SearchYear(2006)">
+          <p>2006</p>
+        </button>
+        <button (click)="SearchYear(2007)">
+          <p>2007</p>
+        </button>
+      </td>
+    </tr>
+    <tr>
+      <td><button (click)="SearchYear(2008)">
+          <p>2008</p>
+        </button>
+        <button (click)="SearchYear(2009)">
+          <p>2009</p>
+        </button>
+      </td>
+    </tr>
+    <tr>
+      <td><button (click)="SearchYear(2010)">
+          <p>2010</p>
+        </button>
+        <button (click)="SearchYear(2011)">
+          <p>2011</p>
+        </button>
+      </td>
+    </tr>
+    <tr>
+      <td><button (click)="SearchYear(2012)">
+          <p>2012</p>
+        </button>
+        <button (click)="SearchYear(2013)">
+          <p>2013</p>
+        </button>
+      </td>
+    </tr>
+
+    <tr>
+      <td><button (click)="SearchYear(2014)">
+          <p>2014</p>
+        </button>
+        <button (click)="SearchYear(2015)">
+          <p>2015</p>
+        </button>
+      </td>
+    </tr>
+    <tr>
+      <td><button (click)="SearchYear(2016)">
+          <p>2016</p>
+        </button>
+        <button (click)="SearchYear(2017)">
+          <p>2017</p>
+        </button>
+      </td>
+    </tr>
+    <tr>
+      <td><button (click)="SearchYear(2018)">
+          <p>2018</p>
+        </button>
+        <button (click)="SearchYear(2019)">
+          <p>2019</p>
+        </button>
+      </td>
+    </tr>
+    <tr>
+      <td><button (click)="SearchYear(2020)">
+          <p>2020</p>
+        </button>
+        <button (click)="SearchYear(2021)">
+          <p>2021</p>
+        </button>
+      </td>
+    </tr>
+
+  </table>
+
+
+  <br>
+  <div>
+    <p>Successful Launch</p>
+
+    <hr>
+    <tr>
+      <td><button (click)="SuccessfulLaunch(true)">
+          <p>True</p>
+        </button></td>
+      <td><button (click)="SuccessfulLaunch(false)">
+          <p>False</p>
+        </button></td>
+    </tr>
+  </div>
+  <br>
+  <div>
+    <p>Successful Landing</p>
+
+    <hr>
+    <tr>
+      <td><button (click)="SuccessfulLand(true)">
+          <p>True</p>
+        </button></td>
+      <td><button (click)="SuccessfulLand(false)">
+          <p>False</p>
+        </button></td>
+    </tr>
+    <br>
+  </div>
+</div>
+<div class="item2">
+  <div id="Alldata" class="card" *ngFor="let data of missionData">
+
+    <div>
+      <img src={{data.links.mission_patch}} style="width: 100%;" alt="No Image Available">
+      <h4><b>{{data.mission_name}} {{"#" + data.flight_number}} </b></h4>
+
+      <h4><b>Mission Id:</b></h4>
+      <ul>
+        <li id="missionId">{{data.mission_id}}</li>
+      </ul>
+      <h4><b>Launch Year: {{data.launch_year}} </b></h4>
+      <h4><b>Succesful Launch: {{data.launch_success}} </b></h4>
+      <h4><b>Succesful Landing: {{data.landing_intent}} </b></h4>
+    </div>
+  </div>
+</div>
+
+
+<router-outlet></router-outlet>
+<!-- <footer>
+  <h4><b>Developed By:</b></h4>
+  <h4>Kartikay Kishnatra</h4>
+</footer> -->
